@@ -219,7 +219,7 @@ function PublicFooter({
 
       <div className="border-t border-slate-200 bg-slate-50/70">
         <div className="mx-auto flex max-w-[1480px] flex-col gap-3 px-5 py-5 text-xs leading-5 text-slate-500 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-          <p>© {currentYear} DOTS. All rights reserved.</p>
+          <p>© {currentYear} DOTS. All rights reserved. Developed By Indra</p>
           <p className="max-w-2xl md:text-right">
             DOTS is a professional business-services intermediary
             and is not a government department or law firm.
