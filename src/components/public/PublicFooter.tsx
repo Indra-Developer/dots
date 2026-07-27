@@ -136,7 +136,7 @@ function PublicFooter({
             <p className="mt-5 max-w-md text-sm leading-7 text-slate-500">
               Your trusted partner for business registrations,
               accounting, taxation and compliance. We make every
-              process clear, organised and easy to understand.
+              process clear, organised and easy to understand, zigzex.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
