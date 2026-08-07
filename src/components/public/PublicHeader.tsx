@@ -93,7 +93,7 @@ function PublicHeader({
 
     closeTimerRef.current = window.setTimeout(() => {
       setOpenCategoryId(null);
-    }, 150);
+    }, 300);
   }
 
   function updateScrollIndicators(): void {
@@ -328,54 +328,50 @@ function PublicHeader({
         {openCategory &&
           openCategoryServices.length > 0 && (
             <div
-              className="absolute inset-x-0 top-full hidden border-b border-slate-200 bg-white shadow-[0_24px_55px_rgba(15,23,42,0.13)] lg:block"
+              className="absolute inset-x-0 top-full hidden max-h-[calc(100vh-82px)] overflow-hidden border-b border-slate-200 bg-white shadow-[0_24px_55px_rgba(15,23,42,0.13)] lg:block"
               onMouseEnter={clearCloseTimer}
               onMouseLeave={scheduleCategoryClose}
             >
-              <div className="mx-auto max-w-[1480px] px-8 py-7">
-                <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-                    <PublicIcon name={openCategory.iconName} />
+              <div className="mx-auto flex max-h-[calc(100vh-82px)] max-w-[1480px] flex-col px-8 py-4">
+                <div className="mb-3 flex shrink-0 items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                    <PublicIcon
+                      name={openCategory.iconName}
+                      className="h-[17px] w-[17px]"
+                    />
                   </span>
-                  <div>
-                    <p className="text-lg font-bold text-slate-900">
-                      {openCategory.name}
-                    </p>
-                    <p className="text-sm text-slate-500">
-                      Choose a service to view its process,
-                      documents and pricing.
-                    </p>
-                  </div>
+                  <p className="text-[17px] font-bold leading-6 text-slate-900">
+                    {openCategory.name}
+                  </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-x-8 gap-y-2 xl:grid-cols-4">
-                  {openCategoryServices.map((service) => (
-                    <Link
-                      key={service.id}
-                      to={`/service/${service.slug}`}
-                      className="group flex items-center gap-3 rounded-xl px-3 py-3 transition hover:bg-blue-50/70"
-                    >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition group-hover:bg-white group-hover:text-blue-600 group-hover:shadow-sm">
-                        <PublicIcon
-                          name={service.iconName}
-                          className="h-[18px] w-[18px]"
-                        />
-                      </span>
+                <div className="public-dropdown-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain pr-2 [scrollbar-gutter:stable]">
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-0.5 xl:grid-cols-4">
+                    {openCategoryServices.map((service) => (
+                      <Link
+                        key={service.id}
+                        to={`/service/${service.slug}`}
+                        onMouseEnter={clearCloseTimer}
+                        className="group flex min-h-11 items-center gap-2.5 rounded-lg px-2.5 py-2 transition hover:bg-blue-50/70 focus:bg-blue-50/70"
+                      >
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-slate-500 transition group-hover:bg-white group-hover:text-blue-600 group-hover:shadow-sm">
+                          <PublicIcon
+                            name={service.iconName}
+                            className="h-4 w-4"
+                          />
+                        </span>
 
-                      <span className="min-w-0 flex-1">
-                        <span className="block font-semibold text-slate-800 transition group-hover:text-blue-700">
+                        <span className="min-w-0 flex-1 text-[13px] font-semibold leading-[18px] text-slate-800 transition group-hover:text-blue-700">
                           {service.name}
                         </span>
-                        {service.shortDescription && (
-                          <span className="mt-0.5 block truncate text-xs text-slate-500">
-                            {service.shortDescription}
-                          </span>
-                        )}
-                      </span>
 
-                      <PublicSvgIcon name="ArrowRight" className="h-4 w-4 shrink-0 text-slate-300 transition group-hover:translate-x-1 group-hover:text-blue-600" />
-                    </Link>
-                  ))}
+                        <PublicSvgIcon
+                          name="ArrowRight"
+                          className="h-3.5 w-3.5 shrink-0 text-blue-200 transition group-hover:translate-x-0.5 group-hover:text-blue-500"
+                        />
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
