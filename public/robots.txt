@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dotstaxfilings.com/sitemap.xml
+Sitemap: https://www.dotstaxfilings.com/sitemap.xml
